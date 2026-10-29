@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "current_feature": "project-setup",
+  "features": [
+    {
+      "id": "project-setup",
+      "title": "Project Setup & Core Infrastructure",
+      "status": "done",
+      "acceptance": [
+        "FastAPI backend with basic health endpoint",
+        "React frontend with plugin listing page",
+        "Docker compose for local development",
+        "Marketplace JSON schema validation"
+      ],
+      "implementation": [
+        "backend/app/main.py",
+        "backend/requirements.txt",
+        "backend/Dockerfile",
+        "frontend/package.json",
+        "frontend/src/App.tsx",
+        "frontend/src/PluginList.tsx",
+        "frontend/src/PluginDetail.tsx",
+        "frontend/src/types.ts",
+        "frontend/vite.config.ts",
+        "docker-compose.yml"
+      ],
+      "tests": [
+        "backend/tests/test_main.py::test_health_endpoint",
+        "backend/tests/test_main.py::test_validate_marketplace_schema"
+      ]
+    },
+    {
+      "id": "marketplace-core",
+      "title": "Marketplace Core - Plugin Directory",
+      "status": "done",
+      "acceptance": [
+        "Load plugins from marketplace.json",
+        "Display plugin list with name, description, author",
+        "Filter by category (LSP, MCP, etc.)",
+        "Search by name/description"
+      ],
+      "implementation": [
+        "backend/app/main.py",
+        "frontend/src/App.tsx",
+        "frontend/src/PluginList.tsx",
+        "marketplace.json"
+      ],
+      "tests": [
+        "backend/tests/test_main.py::test_list_plugins",
+        "backend/tests/test_main.py::test_get_plugin",
+        "backend/tests/test_main.py::test_get_nonexistent_plugin"
+      ]
+    },
+    {
+      "id": "plugin-detail",
+      "title": "Plugin Detail View",
+      "status": "done",
+      "acceptance": [
+        "Click plugin to view details",
+        "Show installation instructions",
+        "Display LSP/MCP configuration",
+        "Show source repository link"
+      ],
+      "implementation": [
+        "frontend/src/PluginDetail.tsx",
+        "frontend/src/App.tsx"
+      ],
+      "tests": []
+    },
+    {
+      "id": "lsp-plugin-support",
+      "title": "LSP Plugin Configuration Fix",
+      "status": "done",
+      "acceptance": [
+        "Generate .lsp.json files for each LSP plugin",
+        "Validate marketplace.json lspServers config",
+        "Fix issue #379 - missing LSP configuration"
+      ],
+      "implementation": [
+        "plugins/*/.lsp.json (12 files)",
+        "plugins/*/README.md (12 files)",
+        "marketplace.json",
+        "backend/tests/test_main.py::test_all_lsp_plugins_have_lsp_config"
+      ],
+      "tests": [
+        "backend/tests/test_main.py::test_all_lsp_plugins_have_lsp_config"
+      ]
+    },
+    {
+      "id": "vue-volar-lsp",
+      "title": "Add Vue/Volar LSP Plugin",
+      "status": "done",
+      "acceptance": [
+        "Add vue-volar plugin entry in marketplace.json",
+        "Create plugin directory with .lsp.json",
+        "Reference @vue/language-server configuration",
+        "Address issue #232"
+      ],
+      "implementation": [
+        "plugins/vue-volar/.lsp.json",
+        "plugins/vue-volar/README.md",
+        "marketplace.json",
+        "backend/tests/test_main.py::test_marketplace_has_vue_volar"
+      ],
+      "tests": [
+        "backend/tests/test_main.py::test_marketplace_has_vue_volar"
+      ]
+    }
+  ]
+}

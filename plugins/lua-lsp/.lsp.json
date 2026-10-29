@@ -1,0 +1,12 @@
+{
+  "lspServers": {
+    "lua-language-server": {
+      "command": "lua-language-server",
+      "args": ["--stdio"],
+      "extensionToLanguage": {
+        ".lua": "lua"
+      },
+      "transport": "stdio"
+    }
+  }
+}
