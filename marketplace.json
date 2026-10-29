@@ -1,0 +1,234 @@
+{
+  "plugins": [
+    {
+      "name": "typescript-lsp",
+      "description": "TypeScript/JavaScript Language Server Protocol support via typescript-language-server",
+      "author": "Anthropic",
+      "source": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/typescript-lsp",
+      "category": "lsp",
+      "tags": ["typescript", "javascript", "lsp"],
+      "lspServers": {
+        "typescript": {
+          "command": "typescript-language-server",
+          "args": ["--stdio"],
+          "extensionToLanguage": {
+            ".ts": "typescript",
+            ".tsx": "typescriptreact",
+            ".js": "javascript",
+            ".jsx": "javascriptreact"
+          },
+          "transport": "stdio"
+        }
+      }
+    },
+    {
+      "name": "pyright-lsp",
+      "description": "Python Language Server Protocol support via Pyright",
+      "author": "Anthropic",
+      "source": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/pyright-lsp",
+      "category": "lsp",
+      "tags": ["python", "lsp"],
+      "lspServers": {
+        "pyright": {
+          "command": "pyright-langserver",
+          "args": ["--stdio"],
+          "extensionToLanguage": {
+            ".py": "python"
+          },
+          "transport": "stdio"
+        }
+      }
+    },
+    {
+      "name": "gopls-lsp",
+      "description": "Go Language Server Protocol support via gopls",
+      "author": "Anthropic",
+      "source": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/gopls-lsp",
+      "category": "lsp",
+      "tags": ["go", "golang", "lsp"],
+      "lspServers": {
+        "gopls": {
+          "command": "gopls",
+          "args": ["serve"],
+          "extensionToLanguage": {
+            ".go": "go"
+          },
+          "transport": "stdio"
+        }
+      }
+    },
+    {
+      "name": "rust-analyzer-lsp",
+      "description": "Rust Language Server Protocol support via rust-analyzer",
+      "author": "Anthropic",
+      "source": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/rust-analyzer-lsp",
+      "category": "lsp",
+      "tags": ["rust", "lsp"],
+      "lspServers": {
+        "rust-analyzer": {
+          "command": "rust-analyzer",
+          "args": [],
+          "extensionToLanguage": {
+            ".rs": "rust"
+          },
+          "transport": "stdio"
+        }
+      }
+    },
+    {
+      "name": "clangd-lsp",
+      "description": "C/C++ Language Server Protocol support via clangd",
+      "author": "Anthropic",
+      "source": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/clangd-lsp",
+      "category": "lsp",
+      "tags": ["c", "cpp", "c++", "lsp"],
+      "lspServers": {
+        "clangd": {
+          "command": "clangd",
+          "args": [],
+          "extensionToLanguage": {
+            ".c": "c",
+            ".cpp": "cpp",
+            ".cc": "cpp",
+            ".cxx": "cpp",
+            ".h": "c",
+            ".hpp": "cpp"
+          },
+          "transport": "stdio"
+        }
+      }
+    },
+    {
+      "name": "php-lsp",
+      "description": "PHP Language Server Protocol support via phpactor",
+      "author": "Anthropic",
+      "source": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/php-lsp",
+      "category": "lsp",
+      "tags": ["php", "lsp"],
+      "lspServers": {
+        "phpactor": {
+          "command": "phpactor",
+          "args": ["language-server"],
+          "extensionToLanguage": {
+            ".php": "php"
+          },
+          "transport": "stdio"
+        }
+      }
+    },
+    {
+      "name": "swift-lsp",
+      "description": "Swift Language Server Protocol support via sourcekit-lsp",
+      "author": "Anthropic",
+      "source": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/swift-lsp",
+      "category": "lsp",
+      "tags": ["swift", "lsp", "ios", "macos"],
+      "lspServers": {
+        "sourcekit-lsp": {
+          "command": "sourcekit-lsp",
+          "args": [],
+          "extensionToLanguage": {
+            ".swift": "swift"
+          },
+          "transport": "stdio"
+        }
+      }
+    },
+    {
+      "name": "kotlin-lsp",
+      "description": "Kotlin Language Server Protocol support via kotlin-language-server",
+      "author": "Anthropic",
+      "source": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/kotlin-lsp",
+      "category": "lsp",
+      "tags": ["kotlin", "lsp", "android"],
+      "lspServers": {
+        "kotlin-language-server": {
+          "command": "kotlin-language-server",
+          "args": [],
+          "extensionToLanguage": {
+            ".kt": "kotlin",
+            ".kts": "kotlin"
+          },
+          "transport": "stdio"
+        }
+      }
+    },
+    {
+      "name": "csharp-lsp",
+      "description": "C# Language Server Protocol support via csharp-lsp (OmniSharp)",
+      "author": "Anthropic",
+      "source": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/csharp-lsp",
+      "category": "lsp",
+      "tags": ["csharp", "c#", "dotnet", "lsp"],
+      "lspServers": {
+        "csharp-lsp": {
+          "command": "csharp-lsp",
+          "args": [],
+          "extensionToLanguage": {
+            ".cs": "csharp"
+          },
+          "transport": "stdio"
+        }
+      }
+    },
+    {
+      "name": "jdtls-lsp",
+      "description": "Java Language Server Protocol support via jdtls (Eclipse JDT Language Server)",
+      "author": "Anthropic",
+      "source": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/jdtls-lsp",
+      "category": "lsp",
+      "tags": ["java", "lsp"],
+      "lspServers": {
+        "jdtls": {
+          "command": "jdtls",
+          "args": [],
+          "extensionToLanguage": {
+            ".java": "java"
+          },
+          "transport": "stdio"
+        }
+      }
+    },
+    {
+      "name": "lua-lsp",
+      "description": "Lua Language Server Protocol support via lua-language-server",
+      "author": "Anthropic",
+      "source": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/lua-lsp",
+      "category": "lsp",
+      "tags": ["lua", "lsp"],
+      "lspServers": {
+        "lua-language-server": {
+          "command": "lua-language-server",
+          "args": ["--stdio"],
+          "extensionToLanguage": {
+            ".lua": "lua"
+          },
+          "transport": "stdio"
+        }
+      }
+    },
+    {
+      "name": "vue-volar",
+      "description": "Vue.js Language Server Protocol support via Volar (@vue/language-server)",
+      "author": "Anthropic",
+      "source": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/vue-volar",
+      "category": "lsp",
+      "tags": ["vue", "vue3", "volar", "lsp", "typescript"],
+      "lspServers": {
+        "vue": {
+          "command": "vue-language-server",
+          "args": ["--stdio"],
+          "extensionToLanguage": {
+            ".vue": "vue"
+          },
+          "transport": "stdio",
+          "initializationOptions": {
+            "typescript": {
+              "tsdk": "node_modules/typescript/lib"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

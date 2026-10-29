@@ -1,0 +1,12 @@
+{
+  "lspServers": {
+    "sourcekit-lsp": {
+      "command": "sourcekit-lsp",
+      "args": [],
+      "extensionToLanguage": {
+        ".swift": "swift"
+      },
+      "transport": "stdio"
+    }
+  }
+}

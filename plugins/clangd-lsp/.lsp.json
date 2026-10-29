@@ -1,0 +1,17 @@
+{
+  "lspServers": {
+    "clangd": {
+      "command": "clangd",
+      "args": [],
+      "extensionToLanguage": {
+        ".c": "c",
+        ".cpp": "cpp",
+        ".cc": "cpp",
+        ".cxx": "cpp",
+        ".h": "c",
+        ".hpp": "cpp"
+      },
+      "transport": "stdio"
+    }
+  }
+}
