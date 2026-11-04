@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "current_feature": "project-setup",
+  "current_feature": "vue-volar-lsp",
   "features": [
     {
       "id": "project-setup",
