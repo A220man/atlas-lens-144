@@ -1,8 +1,16 @@
 # Changelog
 
+## 1.3.0 — work-in-progress checkpoint
+
+Partial code published for continued development. Known issues: STATUS.md.
+
 ## 1.2.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
+
+### Completed This Round
+
+- **MCP Plugin Support** (addresses issues #283, #783): Added `github-mcp` and `discord-mcp` plugins with MCP server configurations
 
 ## 1.1.0 — work-in-progress checkpoint
 
@@ -22,5 +30,7 @@ Partial code published for continued development. Known issues: STATUS.md.
 ### Addressed Upstream Issues
 
 - #232: Added Vue/Volar LSP plugin
+- #283: Added GitHub MCP plugin
 - #379: Fixed missing `.lsp.json` files for all LSP plugins
 - #587: Added JSON Schema validation for marketplace.json
+- #783: Added Discord MCP plugin

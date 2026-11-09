@@ -229,6 +229,42 @@
           }
         }
       }
+    },
+    {
+      "name": "github-mcp",
+      "description": "GitHub integration via Model Context Protocol (MCP)",
+      "author": "Anthropic",
+      "source": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/github-mcp",
+      "category": "mcp",
+      "tags": ["github", "mcp", "api"],
+      "mcpServers": {
+        "github": {
+          "command": "npx",
+          "args": ["-y", "@modelcontextprotocol/server-github"],
+          "env": {
+            "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+          },
+          "transport": "stdio"
+        }
+      }
+    },
+    {
+      "name": "discord-mcp",
+      "description": "Discord integration via Model Context Protocol (MCP)",
+      "author": "Anthropic",
+      "source": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/discord-mcp",
+      "category": "mcp",
+      "tags": ["discord", "mcp", "chat"],
+      "mcpServers": {
+        "discord": {
+          "command": "npx",
+          "args": ["-y", "@modelcontextprotocol/server-discord"],
+          "env": {
+            "DISCORD_BOT_TOKEN": "${DISCORD_BOT_TOKEN}"
+          },
+          "transport": "stdio"
+        }
+      }
     }
   ]
 }

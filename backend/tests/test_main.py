@@ -96,3 +96,26 @@ def test_all_lsp_plugins_have_lsp_config():
     for plugin in lsp_plugins:
         assert "lspServers" in plugin, f"Plugin {plugin['name']} missing lspServers"
         assert len(plugin["lspServers"]) > 0, f"Plugin {plugin['name']} has empty lspServers"
+def test_marketplace_has_github_mcp():
+    """Test that github-mcp plugin exists (issue #283)"""
+    response = client.get("/api/plugins")
+    plugins = response.json()
+    github_plugin = next((p for p in plugins if p["name"] == "github-mcp"), None)
+    assert github_plugin is not None, "github-mcp plugin not found"
+    assert github_plugin["category"] == "mcp"
+    assert "github" in github_plugin["tags"]
+    assert "mcp" in github_plugin["tags"]
+    assert "mcpServers" in github_plugin
+    assert "github" in github_plugin["mcpServers"]
+
+def test_marketplace_has_discord_mcp():
+    """Test that discord-mcp plugin exists (issue #783)"""
+    response = client.get("/api/plugins")
+    plugins = response.json()
+    discord_plugin = next((p for p in plugins if p["name"] == "discord-mcp"), None)
+    assert discord_plugin is not None, "discord-mcp plugin not found"
+    assert discord_plugin["category"] == "mcp"
+    assert "discord" in discord_plugin["tags"]
+    assert "mcp" in discord_plugin["tags"]
+    assert "mcpServers" in discord_plugin
+    assert "discord" in discord_plugin["mcpServers"]
