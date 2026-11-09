@@ -4,7 +4,7 @@ Each round completes one feature or repair. Future items are planned, not implem
 
 ## Current round
 
-vue-volar-lsp
+mcp-plugin-support
 
 ## Roadmap
 
@@ -74,4 +74,18 @@ Acceptance:
 Implementation: `plugins/vue-volar/.lsp.json`, `plugins/vue-volar/README.md`, `marketplace.json`, `backend/tests/test_main.py::test_marketplace_has_vue_volar`
 
 Tests: `backend/tests/test_main.py::test_marketplace_has_vue_volar`
+
+### mcp-plugin-support — MCP Plugin Support
+
+Status: done
+
+Acceptance:
+- Add MCP plugin entries in marketplace.json
+- Create plugin directories with .mcp.json configuration
+- Support GitHub and Discord MCP plugins
+- Address issues #283 and #783
+
+Implementation: `plugins/github-mcp/.mcp.json`, `plugins/github-mcp/README.md`, `plugins/discord-mcp/.mcp.json`, `plugins/discord-mcp/README.md`, `marketplace.json`, `backend/tests/test_main.py::test_marketplace_has_github_mcp`, `backend/tests/test_main.py::test_marketplace_has_discord_mcp`
+
+Tests: `backend/tests/test_main.py::test_marketplace_has_github_mcp`, `backend/tests/test_main.py::test_marketplace_has_discord_mcp`
 

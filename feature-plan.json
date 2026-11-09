@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "current_feature": "vue-volar-lsp",
+  "current_feature": "mcp-plugin-support",
   "features": [
     {
       "id": "project-setup",
@@ -104,6 +104,30 @@
       ],
       "tests": [
         "backend/tests/test_main.py::test_marketplace_has_vue_volar"
+      ]
+    },
+    {
+      "id": "mcp-plugin-support",
+      "title": "MCP Plugin Support",
+      "status": "done",
+      "acceptance": [
+        "Add MCP plugin entries in marketplace.json",
+        "Create plugin directories with .mcp.json configuration",
+        "Support GitHub and Discord MCP plugins",
+        "Address issues #283 and #783"
+      ],
+      "implementation": [
+        "plugins/github-mcp/.mcp.json",
+        "plugins/github-mcp/README.md",
+        "plugins/discord-mcp/.mcp.json",
+        "plugins/discord-mcp/README.md",
+        "marketplace.json",
+        "backend/tests/test_main.py::test_marketplace_has_github_mcp",
+        "backend/tests/test_main.py::test_marketplace_has_discord_mcp"
+      ],
+      "tests": [
+        "backend/tests/test_main.py::test_marketplace_has_github_mcp",
+        "backend/tests/test_main.py::test_marketplace_has_discord_mcp"
       ]
     }
   ]
