@@ -45,22 +45,42 @@ MARKETPLACE_SCHEMA = {
 # Marketplace file is at project root
 MARKETPLACE_PATH = Path(__file__).parent.parent.parent / "marketplace.json"
 
+
 def validate_marketplace(path: Path):
-    """Validate marketplace.json file against schema."""
+    """Validate marketplace.json file against schema and check category-config consistency."""
     with open(path) as f:
         data = json.load(f)
     validate(instance=data, schema=MARKETPLACE_SCHEMA)
+    
+    # Category-aware validation: ensure appropriate server config is present
+    for plugin in data["plugins"]:
+        category = plugin.get("category", "other")
+        has_lsp = "lspServers" in plugin and plugin["lspServers"] is not None
+        has_mcp = "mcpServers" in plugin and plugin["mcpServers"] is not None
+        
+        if category == "lsp" and not has_lsp:
+            raise ValidationError(
+                f"Plugin '{plugin['name']}' has category 'lsp' but is missing 'lspServers' configuration"
+            )
+        if category == "mcp" and not has_mcp:
+            raise ValidationError(
+                f"Plugin '{plugin['name']}' has category 'mcp' but is missing 'mcpServers' configuration"
+            )
+    
     return data
+
 
 @app.get("/health")
 async def health():
     return {"status": "ok", "service": "atlas-lens-144"}
+
 
 @app.get("/api/plugins")
 async def list_plugins():
     """List all plugins from marketplace.json."""
     data = validate_marketplace(MARKETPLACE_PATH)
     return data["plugins"]
+
 
 @app.get("/api/plugins/{name}")
 async def get_plugin(name: str):
@@ -71,12 +91,12 @@ async def get_plugin(name: str):
             return plugin
     raise HTTPException(status_code=404, detail="Plugin not found")
 
+
 @app.post("/api/validate")
 async def validate_marketplace_endpoint(file_path: str = "marketplace.json"):
     """Validate marketplace.json file against schema."""
     path = Path(file_path)
     if not path.is_absolute():
-        # If relative, look in project root
         path = Path(__file__).parent.parent.parent / file_path
     if not path.exists():
         raise HTTPException(status_code=404, detail="File not found")
@@ -86,6 +106,7 @@ async def validate_marketplace_endpoint(file_path: str = "marketplace.json"):
         return {"valid": True, "message": "Marketplace file is valid"}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
 
 if __name__ == "__main__":
     import uvicorn
