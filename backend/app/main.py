@@ -55,8 +55,8 @@ def validate_marketplace(path: Path):
     # Category-aware validation: ensure appropriate server config is present
     for plugin in data["plugins"]:
         category = plugin.get("category", "other")
-        has_lsp = "lspServers" in plugin and plugin["lspServers"] is not None
-        has_mcp = "mcpServers" in plugin and plugin["mcpServers"] is not None
+        has_lsp = "lspServers" in plugin and plugin["lspServers"] is not None and len(plugin.get("lspServers", {})) > 0
+        has_mcp = "mcpServers" in plugin and plugin["mcpServers"] is not None and len(plugin.get("mcpServers", {})) > 0
         
         if category == "lsp" and not has_lsp:
             raise ValidationError(
