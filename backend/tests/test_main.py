@@ -25,7 +25,13 @@ def test_validate_marketplace_schema():
                 "source": "https://example.com",
                 "category": "lsp",
                 "tags": ["test"],
-                "lspServers": {}
+                "lspServers": {
+                    "typescript": {
+                        "command": "typescript-language-server",
+                        "args": ["--stdio"],
+                        "extensionToLanguage": {".ts": "typescript", ".tsx": "typescriptreact"}
+                    }
+                }
             }
         ]
     }
@@ -119,3 +125,22 @@ def test_marketplace_has_discord_mcp():
     assert "mcp" in discord_plugin["tags"]
     assert "mcpServers" in discord_plugin
     assert "discord" in discord_plugin["mcpServers"]
+def test_all_plugins_have_valid_server_config():
+    """Test that all plugins have valid, non-empty server config (issue implicit).
+    
+    Ensures that LSP plugins have non-empty lspServers and MCP plugins
+    have non-empty mcpServers, preventing runtime failures from
+    misconfigured plugins.
+    """
+    response = client.get("/api/plugins")
+    plugins = response.json()
+    for plugin in plugins:
+        name = plugin["name"]
+        category = plugin.get("category", "other")
+        if category == "lsp":
+            assert "lspServers" in plugin, f"{name}: missing lspServers"
+            assert len(plugin["lspServers"]) > 0, f"{name}: lspServers is empty"
+        if category == "mcp":
+            assert "mcpServers" in plugin, f"{name}: missing mcpServers"
+            assert len(plugin["mcpServers"]) > 0, f"{name}: mcpServers is empty"
+
